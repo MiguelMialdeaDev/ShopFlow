@@ -47,14 +47,15 @@ fun CartScreen(
         },
         bottomBar = {
             if (cartItems.isNotEmpty()) {
-                BottomAppBar(
-                    containerColor = MaterialTheme.colorScheme.surface,
-                    tonalElevation = 8.dp
+                Surface(
+                    shadowElevation = 8.dp,
+                    tonalElevation = 8.dp,
+                    color = MaterialTheme.colorScheme.surface
                 ) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp)
+                            .padding(horizontal = 16.dp, vertical = 20.dp)
                     ) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
