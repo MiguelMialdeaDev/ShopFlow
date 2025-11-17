@@ -29,26 +29,45 @@ fun HomeScreen(
     val cartCount by viewModel.cartCount.collectAsState()
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = { Text("ShopFlow", fontWeight = FontWeight.Bold) },
+                title = {
+                    Text(
+                        "ShopFlow",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                },
                 actions = {
-                    BadgedBox(
-                        badge = {
-                            if (cartCount > 0) {
-                                Badge { Text(cartCount.toString()) }
+                    IconButton(onClick = onCartClick) {
+                        BadgedBox(
+                            badge = {
+                                if (cartCount > 0) {
+                                    Badge(
+                                        containerColor = MaterialTheme.colorScheme.primary
+                                    ) {
+                                        Text(
+                                            cartCount.toString(),
+                                            color = MaterialTheme.colorScheme.onPrimary
+                                        )
+                                    }
+                                }
                             }
-                        }
-                    ) {
-                        IconButton(onClick = onCartClick) {
-                            Icon(Icons.Default.ShoppingCart, contentDescription = "Cart")
+                        ) {
+                            Icon(
+                                Icons.Default.ShoppingCart,
+                                contentDescription = "Cart",
+                                tint = MaterialTheme.colorScheme.primary
+                            )
                         }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    actionIconContentColor = MaterialTheme.colorScheme.onPrimary
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    actionIconContentColor = MaterialTheme.colorScheme.primary
                 )
             )
         }
@@ -58,40 +77,95 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            // Search Bar
+            // Search Bar - Pill Style
             OutlinedTextField(
                 value = uiState.searchQuery,
                 onValueChange = { viewModel.searchProducts(it) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                placeholder = { Text("Search products...") },
-                leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-                singleLine = true
-            )
+                    .padding(horizontal = 20.dp, vertical = 16.dp),
+                placeholder = {
+                    Text(
+                        "Search products...",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                },
+                singleLine = true,
+                shape = MaterialTheme.shapes.extraLarge, // Pill shape
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedBorderColor = MaterialTheme.colorScheme.outline,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline
+                )
 
-            // Categories
+            // Categories - Pill Chips
             if (uiState.categories.isNotEmpty()) {
                 LazyRow(
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    contentPadding = PaddingValues(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     item {
                         FilterChip(
                             selected = uiState.selectedCategory == "All",
                             onClick = { viewModel.filterByCategory("All") },
-                            label = { Text("All") }
+                            label = {
+                                Text(
+                                    "All",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = if (uiState.selectedCategory == "All")
+                                        FontWeight.SemiBold else FontWeight.Normal
+                                )
+                            },
+                            shape = MaterialTheme.shapes.extraLarge,
+                            colors = FilterChipDefaults.filterChipColors(
+                                selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                containerColor = MaterialTheme.colorScheme.surface,
+                                labelColor = MaterialTheme.colorScheme.onSurface
+                            ),
+                            border = if (uiState.selectedCategory != "All")
+                                FilterChipDefaults.filterChipBorder(
+                                    borderColor = MaterialTheme.colorScheme.outline,
+                                    selectedBorderColor = MaterialTheme.colorScheme.primary
+                                ) else null
                         )
                     }
                     items(uiState.categories) { category ->
                         FilterChip(
                             selected = uiState.selectedCategory == category,
                             onClick = { viewModel.filterByCategory(category) },
-                            label = { Text(category.replaceFirstChar { it.uppercase() }) }
+                            label = {
+                                Text(
+                                    category.replaceFirstChar { it.uppercase() },
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = if (uiState.selectedCategory == category)
+                                        FontWeight.SemiBold else FontWeight.Normal
+                                )
+                            },
+                            shape = MaterialTheme.shapes.extraLarge,
+                            colors = FilterChipDefaults.filterChipColors(
+                                selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                containerColor = MaterialTheme.colorScheme.surface,
+                                labelColor = MaterialTheme.colorScheme.onSurface
+                            ),
+                            border = if (uiState.selectedCategory != category)
+                                FilterChipDefaults.filterChipBorder(
+                                    borderColor = MaterialTheme.colorScheme.outline,
+                                    selectedBorderColor = MaterialTheme.colorScheme.primary
+                                ) else null
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(20.dp))
             }
 
             // Content
@@ -134,11 +208,14 @@ fun HomeScreen(
                 else -> {
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(2),
-                        contentPadding = PaddingValues(16.dp),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                        contentPadding = PaddingValues(horizontal = 20.dp, vertical = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(20.dp)
                     ) {
-                        items(uiState.filteredProducts) { product ->
+                        items(
+                            items = uiState.filteredProducts,
+                            key = { it.id }
+                        ) { product ->
                             ProductCard(
                                 product = product,
                                 onClick = { onProductClick(product.id) }
