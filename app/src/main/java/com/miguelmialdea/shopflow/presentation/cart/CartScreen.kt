@@ -55,6 +55,7 @@ fun CartScreen(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .navigationBarsPadding()
                             .padding(horizontal = 16.dp, vertical = 20.dp)
                     ) {
                         Row(
