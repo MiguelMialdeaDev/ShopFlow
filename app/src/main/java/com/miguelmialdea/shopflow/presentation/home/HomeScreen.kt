@@ -132,11 +132,12 @@ fun HomeScreen(
                                 containerColor = MaterialTheme.colorScheme.surface,
                                 labelColor = MaterialTheme.colorScheme.onSurface
                             ),
-                            border = if (uiState.selectedCategory != "All")
-                                FilterChipDefaults.filterChipBorder(
-                                    borderColor = MaterialTheme.colorScheme.outline,
-                                    selectedBorderColor = MaterialTheme.colorScheme.primary
-                                ) else null
+                            border = FilterChipDefaults.filterChipBorder(
+                                enabled = true,
+                                selected = uiState.selectedCategory == "All",
+                                borderColor = MaterialTheme.colorScheme.outline,
+                                selectedBorderColor = MaterialTheme.colorScheme.primary
+                            )
                         )
                     }
                     items(uiState.categories) { category ->
@@ -158,11 +159,12 @@ fun HomeScreen(
                                 containerColor = MaterialTheme.colorScheme.surface,
                                 labelColor = MaterialTheme.colorScheme.onSurface
                             ),
-                            border = if (uiState.selectedCategory != category)
-                                FilterChipDefaults.filterChipBorder(
-                                    borderColor = MaterialTheme.colorScheme.outline,
-                                    selectedBorderColor = MaterialTheme.colorScheme.primary
-                                ) else null
+                            border = FilterChipDefaults.filterChipBorder(
+                                enabled = true,
+                                selected = uiState.selectedCategory == category,
+                                borderColor = MaterialTheme.colorScheme.outline,
+                                selectedBorderColor = MaterialTheme.colorScheme.primary
+                            )
                         )
                     }
                 }
