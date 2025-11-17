@@ -7,18 +7,18 @@ A complete, production-ready e-commerce application built with the latest Androi
 ![MinSDK](https://img.shields.io/badge/MinSDK-24-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-red.svg)
 
-## 📱 Features
+## Features
 
-✅ **Product Catalog** - Browse products with search and category filters
-✅ **Product Details** - Detailed view with images, ratings, and descriptions
-✅ **Shopping Cart** - Add, update, and remove items with real-time calculations
-✅ **Checkout Flow** - Complete checkout process with form validation
-✅ **Offline Support** - Local caching with Room Database
-✅ **Clean Architecture** - Separation of concerns with presentation, domain, and data layers
-✅ **Material Design 3** - Modern, beautiful UI following Material guidelines
-✅ **Responsive Design** - Optimized for different screen sizes
+ **Product Catalog** - Browse products with search and category filters
+ **Product Details** - Detailed view with images, ratings, and descriptions
+ **Shopping Cart** - Add, update, and remove items with real-time calculations
+ **Checkout Flow** - Complete checkout process with form validation
+ **Offline Support** - Local caching with Room Database
+ **Clean Architecture** - Separation of concerns with presentation, domain, and data layers
+ **Material Design 3** - Modern, beautiful UI following Material guidelines
+ **Responsive Design** - Optimized for different screen sizes
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Architecture & Patterns
 - **MVVM (Model-View-ViewModel)** - Presentation layer architecture
@@ -41,7 +41,7 @@ A complete, production-ready e-commerce application built with the latest Androi
 | **Image Loading** | Coil |
 | **Material Design** | Material 3 Components |
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 app/
@@ -71,7 +71,7 @@ app/
 └── util/                           # Utility classes
 ```
 
-## 🎨 Architecture
+## Architecture
 
 The app follows **Clean Architecture** principles with three main layers:
 
@@ -92,7 +92,7 @@ The app follows **Clean Architecture** principles with three main layers:
   - **Local**: Room database for offline caching
 - **DTOs & Entities**: Data models for network and database
 
-## 🔌 API
+## API
 
 This app uses the [Fake Store API](https://fakestoreapi.com/), a free REST API for testing and prototyping.
 
@@ -104,7 +104,7 @@ This app uses the [Fake Store API](https://fakestoreapi.com/), a free REST API f
 - `GET /products/categories` - Get all categories
 - `GET /products/category/{category}` - Get products by category
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Android Studio Hedgehog | 2023.1.1 or higher
@@ -138,7 +138,7 @@ cd shopflow
 ./gradlew test
 ```
 
-## 📊 Key Features Implementation
+## Key Features Implementation
 
 ### 1. Product Catalog
 - Grid layout with 2 columns
@@ -168,18 +168,18 @@ cd shopflow
 - Order summary
 - Processing state
 
-## 🎯 Best Practices
+## Best Practices
 
-- ✅ **Single Responsibility Principle**: Each class has one responsibility
-- ✅ **Dependency Inversion**: Depend on abstractions, not implementations
-- ✅ **Separation of Concerns**: Clear layer separation
-- ✅ **Immutability**: Data classes and StateFlow for reactive state
-- ✅ **Error Handling**: Proper error states and user feedback
-- ✅ **Loading States**: Skeleton screens and progress indicators
-- ✅ **Empty States**: Meaningful empty state messages
-- ✅ **Type Safety**: Sealed classes for navigation and resource states
+ **Single Responsibility Principle**: Each class has one responsibility
+ **Dependency Inversion**: Depend on abstractions, not implementations
+ **Separation of Concerns**: Clear layer separation
+ **Immutability**: Data classes and StateFlow for reactive state
+ **Error Handling**: Proper error states and user feedback
+ **Loading States**: Skeleton screens and progress indicators
+ **Empty States**: Meaningful empty state messages
+ **Type Safety**: Sealed classes for navigation and resource states
 
-## 📈 Performance Optimizations
+## Performance Optimizations
 
 - **LazyColumn/LazyGrid** for efficient list rendering
 - **Image caching** with Coil
@@ -188,7 +188,7 @@ cd shopflow
 - **StateFlow** for reactive state management
 - **Hilt** for efficient dependency injection
 
-## 🧪 Testing
+## Testing
 
 The project includes:
 - **Unit Tests**: ViewModel and Repository tests
@@ -203,7 +203,7 @@ The project includes:
 ./gradlew connectedAndroidTest
 ```
 
-## 📱 Screenshots
+## Screenshots
 
 *Add screenshots here after running the app*
 
@@ -211,7 +211,7 @@ The project includes:
 |------------|----------------|------|----------|
 | ![Home](screenshots/home.png) | ![Detail](screenshots/detail.png) | ![Cart](screenshots/cart.png) | ![Checkout](screenshots/checkout.png) |
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - [ ] User authentication
 - [ ] Wishlist/Favorites functionality
@@ -224,22 +224,22 @@ The project includes:
 - [ ] Multi-language support
 - [ ] Analytics integration
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+## Author
 
 **Miguel Ángel Mialdea**
 - Android Developer | 5+ years experience
 - Specialized in Kotlin, Jetpack Compose, Clean Architecture
 - Banking & FinTech expertise (Openbank/Santander Group)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-## ⭐ Acknowledgments
+## Acknowledgments
 
 - [Fake Store API](https://fakestoreapi.com/) for providing free API
 - [Material Design](https://m3.material.io/) for design guidelines
