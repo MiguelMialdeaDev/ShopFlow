@@ -105,6 +105,7 @@ fun HomeScreen(
                     focusedBorderColor = MaterialTheme.colorScheme.outline,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline
                 )
+            )
 
             // Categories - Pill Chips
             if (uiState.categories.isNotEmpty()) {
